@@ -13,7 +13,7 @@ function App() {
     }
   ])
   return (
-    <div className="App">
+    <div className="bg-[#f8f8f8]">
       <RouterProvider router={router}></RouterProvider>
     </div>
   );
