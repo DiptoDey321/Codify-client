@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Header.css'
 
 function Header() {
@@ -7,16 +8,19 @@ function Header() {
       <div className='border-b shadow flex items-center px-[3%] justify-between py-3'>
 
         <div className="logo flex items-center justify-center ">
-            <img className='w-40' src="https://i.ibb.co/2dKrW8N/logo-removebg-preview.png" alt="" srcSet="" />
+            <Link to="/">
+              <img className='w-40' src="https://i.ibb.co/2dKrW8N/logo-removebg-preview.png" alt="" srcSet="" />
+            </Link>
         </div>
 
         <div className="menus">
             <ul className='flex flex-row gap-x-10 items-center'>
-                <li className='flex flex-row gap-x-2 items-center cursor-pointer font-medium text-[#404040] py-3'>
+                <li>
+                  <Link to='/' className='flex flex-row gap-x-2 items-center cursor-pointer font-medium text-[#404040] py-3'>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.625 8.625V19.875H18.375V8.625M2.625 10.875L12 2.625L21.375 10.875" stroke="#404040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
-                  <span>Home</span>
+                  <span>Home</span></Link>
                 </li>
                 <li className='flex flex-row gap-x-2 items-center cursor-pointer font-medium text-[#404040] py-3'>
                   <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,8 +74,8 @@ function Header() {
               <button className='px-3 py-1 bg-white font-medium rounded-md'>Sign-out</button>
             </div>
             <div className="flex items-center gap-x-5">
-              <button className='px-3 py-1 bg-slate-500 text-white font-medium rounded-md'>Login</button>
-              <button className='px-3 py-1 bg-slate-500 text-white font-medium rounded-md'>Register</button>
+              <button className='px-3 py-1 bg-slate-500 text-white font-medium rounded-md'><Link to='/login'>Login</Link></button>
+              {/* <button className='px-3 py-1 bg-slate-500 text-white font-medium rounded-md'>Register</button> */}
             </div>
           </div>
 
