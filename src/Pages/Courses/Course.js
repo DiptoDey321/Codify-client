@@ -1,11 +1,11 @@
-import SideNav from './SideNav/SideNav';
-import React, { useState,useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import DisplayCourse from './DisplayCourse/DisplayCourse';
+import SideNav from './SideNav/SideNav';
 
 
 
 function Course() {
-  const [primaryData, setPrimaryData] = useState(1)
+  // const [primaryData, setPrimaryData] = useState(1)
   const [courseData, setcourseData] = useState([])
 
   const [courses, setcourses] = useState([])
@@ -13,7 +13,8 @@ function Course() {
 
   const handleClick = (id ) =>{
     console.log(id);
-    courses.map((course) =>{
+    // eslint-disable-next-line array-callback-return
+    courses.map((course) => {
       if(course.id === id){
         setcourseData(course)
       }

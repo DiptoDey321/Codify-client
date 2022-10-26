@@ -13,7 +13,7 @@ function Selfdevelopment() {
             </div>
 
             <div className="w-[50%]">
-                <img src="https://i.ibb.co/XsC8s59/Self-confidence-bro-1.png" alt="" srcset="" />
+                <img src="https://i.ibb.co/XsC8s59/Self-confidence-bro-1.png" alt="" srcSet="" />
             </div>
         </div>
     </div>

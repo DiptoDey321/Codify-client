@@ -12,19 +12,19 @@ function WebInfo() {
            <div className=" mt-5">
                 <p className='flex items-center gap-x-2 text-slate-500'>
                     <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 6L6.25 11L8.875 8M7 6L12.25 11L21 1M15 1L11.5 5" stroke="#9747FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M1 6L6.25 11L8.875 8M7 6L12.25 11L21 1M15 1L11.5 5" stroke="#9747FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     <span>Upskill you</span>
                 </p>
                 <p className='flex items-center gap-x-2 text-slate-500'>
                     <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 6L6.25 11L8.875 8M7 6L12.25 11L21 1M15 1L11.5 5" stroke="#9747FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M1 6L6.25 11L8.875 8M7 6L12.25 11L21 1M15 1L11.5 5" stroke="#9747FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     <span> Access more then 100 online courses</span>
                 </p>
                 <p className='flex items-center gap-x-2 text-slate-500'>
                     <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 6L6.25 11L8.875 8M7 6L12.25 11L21 1M15 1L11.5 5" stroke="#9747FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M1 6L6.25 11L8.875 8M7 6L12.25 11L21 1M15 1L11.5 5" stroke="#9747FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     <span>Learn the latest skills & tecnology</span>
                 </p>

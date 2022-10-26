@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider'
 import './Header.css'
 
 function Header() {
+  const {user} = useContext(AuthContext)
+  console.log(user);
   return (
     <div>
       <div className='border-b shadow flex items-center px-[3%] justify-between py-3'>
@@ -79,6 +82,7 @@ function Header() {
             </div>
             <div className="flex items-center gap-x-5">
               <button className='px-3 py-1 bg-slate-500 text-white font-medium rounded-md'><Link to='/login'>Login</Link></button>
+              {user?.display}
               {/* <button className='px-3 py-1 bg-slate-500 text-white font-medium rounded-md'>Register</button> */}
             </div>
           </div>
