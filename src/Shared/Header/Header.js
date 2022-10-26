@@ -4,8 +4,13 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider'
 import './Header.css'
 
 function Header() {
-  const {user} = useContext(AuthContext)
+  const {user , logOut} = useContext(AuthContext)
   console.log(user);
+  const handleLogout = () =>{
+    logOut()
+    .then(()=>{})
+    .catch(error => console.log(error))
+  }
   return (
     <div>
       <div className='border-b shadow flex items-center px-[3%] justify-between py-3'>
@@ -73,18 +78,21 @@ function Header() {
         </div>
         <div className="profile ml-20 flex flex-row gap-x-5 items-center">
           <div className="">
-            <div className="flex items-center gap-x-3 hidden">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" clipRule="evenodd" d="M6.4856 18.4284C10.5926 17.8284 13.4204 17.88 17.5328 18.4494C17.8306 18.4926 18.1028 18.6421 18.2989 18.8702C18.4951 19.0984 18.6021 19.3899 18.6002 19.6908C18.6002 19.9788 18.5012 20.2584 18.3224 20.4768C18.0108 20.8576 17.6915 21.2321 17.3648 21.6H18.9494C19.049 21.4812 19.1492 21.36 19.2506 21.237C19.6065 20.8006 19.8006 20.2546 19.8002 19.6914C19.8002 18.4764 18.9134 17.4294 17.6972 17.2614C13.4876 16.6788 10.5452 16.623 6.3122 17.2416C5.0834 17.421 4.2002 18.4842 4.2002 19.7076C4.2002 20.2506 4.3772 20.7876 4.7126 21.2226C4.8116 21.351 4.9094 21.477 5.0066 21.6006H6.5528C6.24885 21.2367 5.95239 20.8666 5.6636 20.4906C5.49197 20.2655 5.39939 19.9901 5.4002 19.707C5.4002 19.0608 5.8646 18.519 6.4856 18.4284ZM12.0002 12.6C12.473 12.6 12.9411 12.5069 13.3779 12.326C13.8146 12.1451 14.2115 11.8799 14.5458 11.5456C14.8801 11.2113 15.1452 10.8144 15.3262 10.3777C15.5071 9.9409 15.6002 9.47277 15.6002 9.00001C15.6002 8.52725 15.5071 8.05912 15.3262 7.62235C15.1452 7.18558 14.8801 6.78872 14.5458 6.45443C14.2115 6.12014 13.8146 5.85496 13.3779 5.67405C12.9411 5.49313 12.473 5.40001 12.0002 5.40001C11.0454 5.40001 10.1297 5.7793 9.45461 6.45443C8.77948 7.12956 8.4002 8.04523 8.4002 9.00001C8.4002 9.95479 8.77948 10.8705 9.45461 11.5456C10.1297 12.2207 11.0454 12.6 12.0002 12.6V12.6ZM12.0002 13.8C13.2732 13.8 14.4941 13.2943 15.3943 12.3941C16.2945 11.494 16.8002 10.2731 16.8002 9.00001C16.8002 7.72697 16.2945 6.50607 15.3943 5.6059C14.4941 4.70572 13.2732 4.20001 12.0002 4.20001C10.7272 4.20001 9.50626 4.70572 8.60608 5.6059C7.70591 6.50607 7.2002 7.72697 7.2002 9.00001C7.2002 10.2731 7.70591 11.494 8.60608 12.3941C9.50626 13.2943 10.7272 13.8 12.0002 13.8V13.8Z" fill="black"/>
-                <path fillRule="evenodd" clipRule="evenodd" d="M12 22.8C17.9646 22.8 22.8 17.9646 22.8 12C22.8 6.0354 17.9646 1.2 12 1.2C6.0354 1.2 1.2 6.0354 1.2 12C1.2 17.9646 6.0354 22.8 12 22.8ZM12 24C18.6276 24 24 18.6276 24 12C24 5.3724 18.6276 0 12 0C5.3724 0 0 5.3724 0 12C0 18.6276 5.3724 24 12 24Z" fill="black"/>
-              </svg>
-              <button className='px-3 py-1 bg-white font-medium rounded-md'>Sign-out</button>
+            {
+              user?.photoURL ?
+              <div className="flex items-center gap-x-3">
+              <img className='w-14 h-14 rounded-full' src={user?.photoURL} alt="" srcset="" title={user?.displayName} />
+              <button onClick={handleLogout} className='px-3 py-1 bg-white font-medium rounded-md'>Sign-out</button>
             </div>
+            :
             <div className="flex items-center gap-x-5">
               <button className='px-3 py-1 bg-slate-500 text-white font-medium rounded-md'><Link to='/login'>Login</Link></button>
-              {user?.display}
+              
               {/* <button className='px-3 py-1 bg-slate-500 text-white font-medium rounded-md'>Register</button> */}
             </div>
+            }
+           
+            
           </div>
 
 
