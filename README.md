@@ -19,5 +19,9 @@ you cant get premium access without getting signup.
 - tailwind Css
 - JSX
 
+### `API link` :
+- https://codify-server.vercel.app/course
+- https://codify-server.vercel.app/courseslist
+
 ### `Live link`
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open https://codify-1802f.web.app to view it in your browser.
