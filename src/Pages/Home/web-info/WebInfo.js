@@ -2,13 +2,13 @@ import React from 'react'
 
 function WebInfo() {
   return (
-    <div className='mt-16 flex justify-between mx-[15%] items-center'>
-        <div className="w-[45%]">
+    <div className='mt-16 flex flex-col-reverse sm:flex-row justify-between mx-[8%] sm:mx-[15%] items-center'>
+        <div className="w-full sm:w-[45%] mt-10 sm:mt-0">
             <img src="https://i.ibb.co/ZBhrWJ7/nicole-wolf-x-TBn1-YBr-TE-unsplash.jpg" alt="" srcSet="" />
         </div>
-        <div className="w-[45%]">
-           <h2 className='text-[35px] font-medium text-slate-700'>Achieve your <br /> Goals with Codify</h2>
-           <p className='text-slate-500 mt-5 text-justify'>You can be your own Guiding star with our help. Enjoy the top notch learning methods and achieve next level skills! You are the creator of your own career & we will guide you through ...</p>
+        <div className="w-full sm:w-[45%]">
+           <h2 className='text-[27px] sm:text-[35px] font-medium text-slate-700'>Achieve your <br /> Goals with Codify</h2>
+           <p className='text-sm sm:text-base text-slate-500 mt-5 text-justify'>You can be your own Guiding star with our help. Enjoy the top notch learning methods and achieve next level skills! You are the creator of your own career & we will guide you through ...</p>
            <div className=" mt-5">
                 <p className='flex items-center gap-x-2 text-slate-500'>
                     <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,20 +1,23 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider'
 import './Header.css'
 
 function Header() {
   const {user , logOut} = useContext(AuthContext)
-  console.log(user);
+  // console.log(user);
+  const[showmenu, setShowmenu] = useState(false)
   const handleLogout = () =>{
     logOut()
     .then(()=>{})
     .catch(error => console.log(error))
   }
+
+  console.log(showmenu);
+
   return (
     <div>
-      <div className='border-b shadow flex items-center px-[3%] justify-between py-3'>
-
+      <div className='border-b shadow flex items-center px-[3%] justify-between py-3 relative'>
         <div className="logo flex items-center justify-center ">
             <Link to="/">
               <img className='w-40' src="https://i.ibb.co/2dKrW8N/logo-removebg-preview.png" alt="" srcSet="" />
@@ -22,14 +25,18 @@ function Header() {
         </div>
 
         <div className="menus">
-            <ul className='flex flex-row gap-x-10 items-center'>
+            <button onClick={()=>  setShowmenu(!showmenu)} className='sm:hidden'>
+              toggle
+            </button>
+            <ul className={`${showmenu ? 'mt-24 ':'-translate-y-full sm:translate-y-0 mt-0'} sm:flex flex-row gap-x-10 items-center absolute sm:static bg-white sm:bg-transparent w-full left-0 top-0 sm:mt-0`}>
                 <li>
                   <Link to='/' className='flex flex-row gap-x-2 items-center cursor-pointer font-medium text-[#404040] py-3'>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.625 8.625V19.875H18.375V8.625M2.625 10.875L12 2.625L21.375 10.875" stroke="#404040" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span>Home</span></Link>
+                  <span>Codify</span></Link>
                 </li>
+
                 <li >
                   <Link to='/courses' className='flex flex-row gap-x-2 items-center cursor-pointer font-medium text-[#404040] py-3'>
                     <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,6 +46,7 @@ function Header() {
                     <span>Courses</span>
                   </Link>
                 </li>
+
                 <li>
                   <Link to='/blog' className='flex flex-row gap-x-2 items-center cursor-pointer font-medium text-[#404040] py-3'>
                     <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,66 +55,40 @@ function Header() {
                     <span>Blog</span>
                   </Link>
                 </li>
-                {/* <li className='flex flex-row gap-x-1 items-center cursor-pointer font-medium text-[#404040] py-3'>
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 0C4.486 0 0 4.486 0 10V14.143C0 15.167 0.897 16 2 16H3C3.26522 16 3.51957 15.8946 3.70711 15.7071C3.89464 15.5196 4 15.2652 4 15V9.857C4 9.59178 3.89464 9.33743 3.70711 9.14989C3.51957 8.96236 3.26522 8.857 3 8.857H2.092C2.648 4.987 5.978 2 10 2C14.022 2 17.352 4.987 17.908 8.857H17C16.7348 8.857 16.4804 8.96236 16.2929 9.14989C16.1054 9.33743 16 9.59178 16 9.857V16C16 17.103 15.103 18 14 18H12V17H8V20H14C16.206 20 18 18.206 18 16C19.103 16 20 15.167 20 14.143V10C20 4.486 15.514 0 10 0Z" fill="#404040"/>
-                  </svg>
-                  <span>Support</span>
-                </li> */}
-                
-                <li className='flex flex-row gap-x-2 items-center cursor-pointer font-medium text-[#404040] py-3'>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clipPath="url(#clip0_212_39)">
-                    <path d="M11.9997 1.33331C9.89001 1.33331 7.82772 1.9589 6.0736 3.13097C4.31947 4.30304 2.9523 5.96894 2.14496 7.91802C1.33763 9.8671 1.12639 12.0118 1.53797 14.0809C1.94955 16.1501 2.96545 18.0507 4.45721 19.5425C5.94897 21.0342 7.84959 22.0501 9.91872 22.4617C11.9878 22.8733 14.1326 22.662 16.0816 21.8547C18.0307 21.0474 19.6966 19.6802 20.8687 17.9261C22.0408 16.1719 22.6663 14.1096 22.6663 12C22.6663 9.171 21.5425 6.4579 19.5422 4.45751C17.5418 2.45712 14.8287 1.33331 11.9997 1.33331V1.33331ZM11.9997 21.3333C10.1537 21.3333 8.34922 20.7859 6.81436 19.7604C5.2795 18.7348 4.08322 17.2771 3.3768 15.5717C2.67039 13.8662 2.48555 11.9896 2.84568 10.1791C3.20581 8.36865 4.09473 6.70561 5.40002 5.40032C6.70531 4.09503 8.36835 3.20611 10.1788 2.84598C11.9893 2.48586 13.8659 2.67069 15.5714 3.3771C17.2768 4.08352 18.7345 5.2798 19.7601 6.81466C20.7856 8.34952 21.333 10.154 21.333 12C21.333 14.4753 20.3497 16.8493 18.5993 18.5996C16.849 20.35 14.475 21.3333 11.9997 21.3333Z" fill="#404040"/>
-                    <path d="M18.667 8.06667C18.542 7.9425 18.3731 7.8728 18.197 7.8728C18.0208 7.8728 17.8519 7.9425 17.727 8.06667L10.3269 15.4333L6.32695 11.4333C6.20495 11.3016 6.03562 11.2237 5.85621 11.2169C5.6768 11.21 5.50201 11.2747 5.37028 11.3967C5.23856 11.5187 5.16069 11.688 5.15382 11.8674C5.14694 12.0468 5.21162 12.2216 5.33362 12.3533L10.3269 17.3333L18.667 9.01333C18.7294 8.95136 18.779 8.87762 18.8129 8.79638C18.8467 8.71514 18.8642 8.62801 18.8642 8.54C18.8642 8.45199 18.8467 8.36485 18.8129 8.28361C18.779 8.20237 18.7294 8.12864 18.667 8.06667Z" fill="#404040"/>
-                    </g>
-                    <defs>
-                    <clipPath id="clip0_212_39">
-                    <rect width="24" height="24" fill="#404040"/>
-                    </clipPath>
-                    </defs>
-                  </svg>
-                  <span>Success Story</span>
-                </li>
+                  
                 <li className='flex flex-row gap-x-2 items-center cursor-pointer font-medium text-[#404040] py-3'>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.9289 14.0977C14.3692 13.6137 14.6125 12.9824 14.6109 12.3281C14.6109 10.8773 13.4414 9.70312 12 9.70312C10.5586 9.70312 9.38906 10.8773 9.38906 12.3281C9.38906 13.0102 9.64688 13.6289 10.0711 14.0977C9.5628 14.4126 9.1383 14.846 8.83383 15.3606C8.52936 15.8753 8.35398 16.456 8.32266 17.0531C8.32138 17.0785 8.32529 17.1039 8.33415 17.1278C8.343 17.1516 8.35661 17.1734 8.37415 17.1918C8.39168 17.2102 8.41279 17.2249 8.43617 17.2349C8.45955 17.2449 8.48472 17.25 8.51016 17.25H9.53906C9.6375 17.25 9.71719 17.1727 9.72422 17.0742C9.81328 15.8883 10.8023 14.9531 12.0023 14.9531C13.2023 14.9531 14.1914 15.8906 14.2805 17.0742C14.2875 17.1727 14.3672 17.25 14.4656 17.25H15.4922C15.5176 17.25 15.5428 17.2449 15.5662 17.2349C15.5896 17.2249 15.6107 17.2102 15.6282 17.1918C15.6457 17.1734 15.6593 17.1516 15.6682 17.1278C15.6771 17.1039 15.681 17.0785 15.6797 17.0531C15.6141 15.8039 14.9297 14.7164 13.9289 14.0977ZM12 13.5469C11.332 13.5469 10.7883 13.0008 10.7883 12.3281C10.7883 11.6555 11.332 11.1094 12 11.1094C12.668 11.1094 13.2117 11.6555 13.2117 12.3281C13.2117 13.0008 12.668 13.5469 12 13.5469ZM21.75 5.25H18V3.9375C18 3.83437 17.9156 3.75 17.8125 3.75H16.5C16.3969 3.75 16.3125 3.83437 16.3125 3.9375V5.25H12.8438V3.9375C12.8438 3.83437 12.7594 3.75 12.6562 3.75H11.3438C11.2406 3.75 11.1562 3.83437 11.1562 3.9375V5.25H7.6875V3.9375C7.6875 3.83437 7.60313 3.75 7.5 3.75H6.1875C6.08437 3.75 6 3.83437 6 3.9375V5.25H2.25C1.83516 5.25 1.5 5.58516 1.5 6V19.5C1.5 19.9148 1.83516 20.25 2.25 20.25H21.75C22.1648 20.25 22.5 19.9148 22.5 19.5V6C22.5 5.58516 22.1648 5.25 21.75 5.25ZM20.8125 18.5625H3.1875V6.9375H6V8.25C6 8.35313 6.08437 8.4375 6.1875 8.4375H7.5C7.60313 8.4375 7.6875 8.35313 7.6875 8.25V6.9375H11.1562V8.25C11.1562 8.35313 11.2406 8.4375 11.3438 8.4375H12.6562C12.7594 8.4375 12.8438 8.35313 12.8438 8.25V6.9375H16.3125V8.25C16.3125 8.35313 16.3969 8.4375 16.5 8.4375H17.8125C17.9156 8.4375 18 8.35313 18 8.25V6.9375H20.8125V18.5625Z" fill="#404040"/>
                   </svg>
                   <span>FAQ</span>
                 </li>
+
+                <li className="">
+                  {
+                    user?.uid || user?.photoURL ?
+                    <div className="flex items-center gap-x-3">
+                      <img className='w-14 h-14 rounded-full' src={user?.photoURL} alt="" srcset="" title={user?.displayName} />
+                      <button onClick={handleLogout} className='px-3 py-1 bg-white font-medium rounded-md'>Sign-out</button>
+                    </div>
+                  :
+                    <div className="flex items-center gap-x-5">
+                      <button className='px-3 py-1 bg-slate-500 text-white font-medium rounded-md'><Link to='/login'>Login</Link></button>
+                    </div>
+                  }
+                </li>
+
+                <li className="toggle-button-cover sm:-ml-3 flex items-start py-2">
+                  <div className="">
+                    <div className="button r" id="button-1">
+                      <input type="checkbox" className="checkbox" />
+                      <div className="knobs"></div>
+                      <div className="layer"></div>
+                    </div>
+                  </div>
+                </li>
             </ul>
         </div>
-        <div className="profile ml-20 flex flex-row gap-x-5 items-center">
-          <div className="">
-            {
-              user?.photoURL ?
-              <div className="flex items-center gap-x-3">
-              <img className='w-14 h-14 rounded-full' src={user?.photoURL} alt="" srcset="" title={user?.displayName} />
-              <button onClick={handleLogout} className='px-3 py-1 bg-white font-medium rounded-md'>Sign-out</button>
-            </div>
-            :
-            <div className="flex items-center gap-x-5">
-              <button className='px-3 py-1 bg-slate-500 text-white font-medium rounded-md'><Link to='/login'>Login</Link></button>
-              
-              {/* <button className='px-3 py-1 bg-slate-500 text-white font-medium rounded-md'>Register</button> */}
-            </div>
-            }
-           
-            
-          </div>
-
-
-          <div className="toggle-button-cover">
-            <div className="">
-              <div className="button r" id="button-1">
-                <input type="checkbox" className="checkbox" />
-                <div className="knobs"></div>
-                <div className="layer"></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
+      
       </div>
     </div>
   )

@@ -48,12 +48,12 @@ function Course() {
   
   // console.log(courseData);
   return (
-    <div className='flex'>
+    <div className='flex flex-col sm:flex-row'>
         <div className="w-[400px] shrink-0">
           <SideNav func={handleClick} func1={viewAll}></SideNav>
         </div>
         <div className="w-fit">
-          <DisplayCourse  key={courseData.id} courseData={courseData}></DisplayCourse>
+          <DisplayCourse key={courseData.id} courseData={courseData}></DisplayCourse>
         </div>
     </div>
   )
