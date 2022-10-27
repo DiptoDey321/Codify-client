@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './SideNav.css'
+import './SideNav.css';
 
 function SideNav(func) {
   console.log(func);
   const [courses, setcourses] = useState([])
     useEffect(()=>{
-        fetch("http://localhost:5000/courses")
+        fetch("https://codify-server.vercel.app/courses")
         .then(res => res.json())
         .then(data => setcourses(data))
     },[])

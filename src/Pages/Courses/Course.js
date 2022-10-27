@@ -22,7 +22,7 @@ function Course() {
   }
 
   useEffect(()=>{
-      fetch("http://localhost:5000/courses")
+      fetch("https://codify-server.vercel.app/courses")
       .then(res => res.json())
       .then(data =>{ 
         setcourses(data)
@@ -31,7 +31,7 @@ function Course() {
   },[])
 
   const viewAll = () =>{
-    fetch("http://localhost:5000/courseslist")
+    fetch("https://codify-server.vercel.app/courseslist")
       .then(res => res.json())
       .then(data => {
         console.log(data[0]);

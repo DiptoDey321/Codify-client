@@ -10,7 +10,7 @@ function CourseInfo() {
   const [data, setdata] = useState([]);
 
   useEffect(()=>{
-    fetch("http://localhost:5000/courseslist")
+    fetch("https://codify-server.vercel.app/courseslist")
       .then(res => res.json())
       .then(data => {
         setdata(data[0].courses)})
